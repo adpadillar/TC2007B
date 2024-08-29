@@ -95,7 +95,7 @@ function CreatePost() {
   );
 }
 
-function MobileAuth() {
+export function MobileAuth() {
   const user = useUser();
   const signIn = useSignIn();
   const signOut = useSignOut();
@@ -131,8 +131,6 @@ export default function Index() {
         <Text className="pb-2 text-center text-5xl font-bold text-foreground">
           Create <Text className="text-primary">T3</Text> Turbo
         </Text>
-
-        <MobileAuth />
 
         <View className="py-2">
           <Text className="font-semibold italic text-primary">

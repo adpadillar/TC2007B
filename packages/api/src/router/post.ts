@@ -4,7 +4,7 @@ import { z } from "zod";
 import { desc, eq } from "@acme/db";
 import { CreatePostSchema, Post } from "@acme/db/schema";
 
-import { protectedProcedure, publicProcedure } from "../trpc";
+import { publicProcedure } from "../trpc";
 
 export const postRouter = {
   all: publicProcedure.query(({ ctx }) => {
@@ -28,13 +28,11 @@ export const postRouter = {
       });
     }),
 
-  create: protectedProcedure
-    .input(CreatePostSchema)
-    .mutation(({ ctx, input }) => {
-      return ctx.db.insert(Post).values(input);
-    }),
+  create: publicProcedure.input(CreatePostSchema).mutation(({ ctx, input }) => {
+    return ctx.db.insert(Post).values(input);
+  }),
 
-  delete: protectedProcedure.input(z.string()).mutation(({ ctx, input }) => {
+  delete: publicProcedure.input(z.string()).mutation(({ ctx, input }) => {
     return ctx.db.delete(Post).where(eq(Post.id, input));
   }),
 } satisfies TRPCRouterRecord;
