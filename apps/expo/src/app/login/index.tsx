@@ -15,27 +15,32 @@ export default function Login() {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <ScrollView className="p-4">
-        <Text className="mb-4 text-2xl font-bold text-foreground">
-          Iniciar sesión
-        </Text>
-        <Link
-          href={{ pathname: "/signup/individual" }}
-          className="mb-6 text-primary"
-        >
-          ¿Aún no tienes cuenta? Crea una
-        </Link>
+      <ScrollView className="relative h-full p-4">
+        <View>
+          <Text className="mb-4 text-2xl font-bold text-foreground">
+            Iniciar sesión
+          </Text>
+          <Text className="mb-6">
+            ¿Aún no tienes cuenta?{" "}
+            <Link
+              href={{ pathname: "/signup/individual" }}
+              className="text-primary"
+            >
+              <Text className="text-primary underline">Crea una</Text>
+            </Link>
+          </Text>
+        </View>
 
-        <View className="space-y-4">
+        <View className="flex flex-col gap-y-3">
           <TextInput
-            className="rounded-md bg-input p-2 text-foreground"
+            className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Correo electrónico"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
           <TextInput
-            className="rounded-md bg-input p-2 text-foreground"
+            className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Contraseña"
             value={password}
             onChangeText={setPassword}
@@ -44,7 +49,7 @@ export default function Login() {
         </View>
 
         <TouchableOpacity
-          className="mt-6 rounded-md bg-primary p-3"
+          className="mt-8 rounded-md bg-primary p-3"
           onPress={() => {
             // Handle login logic here
           }}

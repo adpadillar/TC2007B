@@ -17,37 +17,42 @@ export default function SignUpCompany() {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <ScrollView className="p-4">
-        <Text className="mb-4 text-2xl font-bold text-foreground">
-          Crear cuenta de empresa
-        </Text>
-        <Link href={{ pathname: "/login" }} className="mb-6 text-primary">
-          ¿Ya tienes una cuenta? Inicia sesión
-        </Link>
+      <ScrollView className="relative h-full p-4">
+        <View>
+          <Text className="mb-4 text-2xl font-bold text-foreground">
+            Crear cuenta de empresa
+          </Text>
+          <Text className="mb-6">
+            ¿Ya tienes una cuenta?{" "}
+            <Link href={{ pathname: "/login" }} className="text-primary">
+              <Text className="text-primary underline">Inicia sesión</Text>
+            </Link>
+          </Text>
+        </View>
 
-        <View className="space-y-4">
+        <View className="flex flex-col gap-y-3">
           <TextInput
-            className="rounded-md bg-input p-2 text-foreground"
+            className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Razón social"
             value={razonSocial}
             onChangeText={setRazonSocial}
           />
           <TextInput
-            className="rounded-md bg-input p-2 text-foreground"
+            className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Correo electrónico"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
           <TextInput
-            className="rounded-md bg-input p-2 text-foreground"
+            className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Contraseña"
             value={password}
             onChangeText={setPassword}
             secureTextEntry
           />
           <TextInput
-            className="rounded-md bg-input p-2 text-foreground"
+            className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Confirmar contraseña"
             value={confirmPassword}
             onChangeText={setConfirmPassword}
@@ -56,7 +61,7 @@ export default function SignUpCompany() {
         </View>
 
         <TouchableOpacity
-          className="mt-6 rounded-md bg-primary p-3"
+          className="mt-8 rounded-md bg-primary p-3"
           onPress={() => {
             // Handle sign up logic here
           }}
@@ -66,12 +71,14 @@ export default function SignUpCompany() {
           </Text>
         </TouchableOpacity>
 
-        <Link
-          href={{ pathname: "/signup/individual" }}
-          className="mt-6 text-center text-primary"
-        >
-          ¿Eres un individuo?
-        </Link>
+        <View className="mt-6 flex items-center">
+          <Link
+            href={{ pathname: "/signup/individual" }}
+            className="text-center text-primary"
+          >
+            <Text className="text-primary underline">¿Eres un individuo?</Text>
+          </Link>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
