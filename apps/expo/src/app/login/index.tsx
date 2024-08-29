@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 
@@ -15,7 +9,7 @@ export default function Login() {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <ScrollView className="relative h-full p-4">
+      <View className="flex h-full justify-center px-10">
         <View>
           <Text className="mb-4 text-2xl font-bold text-foreground">
             Iniciar sesión
@@ -31,7 +25,7 @@ export default function Login() {
           </Text>
         </View>
 
-        <View className="flex flex-col gap-y-3">
+        <View className="mt-4 flex flex-col gap-y-3">
           <TextInput
             className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Correo electrónico"
@@ -49,16 +43,16 @@ export default function Login() {
         </View>
 
         <TouchableOpacity
-          className="mt-8 rounded-md bg-primary p-3"
+          className="mt-20 rounded-md bg-primary p-3"
           onPress={() => {
             // Handle login logic here
           }}
         >
-          <Text className="text-center font-semibold text-primary-foreground">
+          <Text className="text-center text-lg font-semibold text-primary-foreground">
             Iniciar sesión
           </Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }

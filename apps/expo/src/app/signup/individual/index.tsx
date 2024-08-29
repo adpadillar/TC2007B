@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 
@@ -17,10 +11,10 @@ export default function SignUpIndividual() {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <ScrollView className="relative h-full p-4">
+      <View className="flex h-full justify-center px-10">
         <View>
           <Text className="mb-4 text-2xl font-bold text-foreground">
-            Crear cuenta
+            Crear cuenta individual
           </Text>
           <Text className="mb-6">
             ¿Ya tienes una cuenta?{" "}
@@ -30,7 +24,7 @@ export default function SignUpIndividual() {
           </Text>
         </View>
 
-        <View className="flex flex-col gap-y-3">
+        <View className="mt-4 flex flex-col gap-y-3">
           <TextInput
             className="rounded-md border border-input px-2 py-3 text-foreground"
             placeholder="Nombre completo"
@@ -61,25 +55,22 @@ export default function SignUpIndividual() {
         </View>
 
         <TouchableOpacity
-          className="mt-8 rounded-md bg-primary p-3"
+          className="mt-20 rounded-md bg-primary p-3"
           onPress={() => {
             // Handle sign up logic here
           }}
         >
-          <Text className="text-center font-semibold text-primary-foreground">
+          <Text className="text-center text-lg font-semibold text-primary-foreground">
             Crear cuenta
           </Text>
         </TouchableOpacity>
 
         <View className="mt-6 flex items-center">
-          <Link
-            href={{ pathname: "/signup/company" }}
-            className="text-center text-primary"
-          >
+          <Link href={{ pathname: "/signup/company" }} className="text-primary">
             <Text className="text-primary underline">¿Eres una empresa?</Text>
           </Link>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
