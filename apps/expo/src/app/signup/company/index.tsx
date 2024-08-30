@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 export default function SignUpCompany() {
+  const router = useRouter();
   const [razonSocial, setRazonSocial] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,7 +58,7 @@ export default function SignUpCompany() {
         <TouchableOpacity
           className="mt-20 rounded-md bg-primary p-3"
           onPress={() => {
-            // Handle sign up logic here
+            router.push("/");
           }}
         >
           <Text className="text-center text-lg font-semibold text-primary-foreground">

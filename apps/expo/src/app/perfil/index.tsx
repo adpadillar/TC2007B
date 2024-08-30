@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { Link } from "expo-router";
 
 import NavigationLayout from "../../components/navigation-layout";
 
@@ -13,6 +14,13 @@ export default function Perfil() {
           Perfil. Aquí se mostrará la información del usuario y las opciones de
           configuración.
         </Text>
+        <View className="mt-6">
+          <Link href="/signup/individual">
+            <Text className="text-primary underline">
+              Test: Go to Individual Signup
+            </Text>
+          </Link>
+        </View>
       </View>
     </NavigationLayout>
   );
