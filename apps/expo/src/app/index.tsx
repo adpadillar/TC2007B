@@ -1,67 +1,124 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Platform,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import NavigationLayout from "../components/navigation-layout";
 
 export default function Index() {
   return (
-    <NavigationLayout>
-      <View className="px-8 py-8">
-        {/* Recent Donations Section */}
-        <View className="mb-8">
-          <Text className="mb-4 text-2xl font-bold text-foreground">
-            Tus donaciones recientes
-          </Text>
-
-          <TouchableOpacity className="mb-4 flex-row items-center rounded-md bg-card p-4 shadow">
-            <Ionicons name="time-outline" size={24} color="#000" />
-            <View className="ml-4 flex-1">
-              <Text className="text-lg font-semibold text-foreground">
-                Donación de tiempo
-              </Text>
-              <Text className="text-foreground">50 horas de voluntariado</Text>
+    <NavigationLayout safeArea={false}>
+      <View className="flex-1">
+        {/* Header Section with rounded bottom */}
+        <View className="w-[120vw] -translate-x-[10vw] rounded-b-[90px] bg-primary px-[20vw] pb-16 pt-24">
+          <View className="flex-row items-center justify-between">
+            <View className="flex-row items-center">
+              <Image
+                source={{ uri: "https://via.placeholder.com/40" }}
+                style={{ width: 40, height: 40, borderRadius: 20 }}
+              />
+              <View className="ml-2">
+                <Text className="text-lg font-bold text-white">
+                  ¡Bienvenido de nuevo!
+                </Text>
+                <Text className="text-lg text-white">Axel Padilla</Text>
+              </View>
             </View>
-            <Ionicons name="chevron-forward" size={24} color="#000" />
-          </TouchableOpacity>
-
-          <TouchableOpacity className="mb-4 flex-row items-center rounded-md bg-card p-4 shadow">
-            <Ionicons name="add-circle-outline" size={24} color="#000" />
-            <View className="ml-4 flex-1">
-              <Text className="text-lg font-semibold text-foreground">
-                Hacer una nueva donación
-              </Text>
-              <Text className="text-foreground">Elige tipo de donación</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={24} color="#000" />
-          </TouchableOpacity>
+            <Ionicons name="settings-outline" size={24} color="#fff" />
+          </View>
         </View>
 
-        {/* Your Impact Section */}
-        <View>
-          <Text className="mb-4 text-2xl font-bold text-foreground">
-            Tu impacto
-          </Text>
+        <View className="-translate-y-[55px]">
+          {/* Search Bar */}
+          <View className="mb-4 mt-8 px-8">
+            <TextInput
+              placeholder="Busca noticias o información..."
+              className="w-full rounded-full border border-gray-200 bg-white p-3 shadow"
+            />
+          </View>
 
-          <View className="rounded-md bg-card p-4 shadow">
+          {/* Info Card */}
+          <View className="mx-8 mb-4 flex-row rounded-md bg-card p-4 shadow">
             <Image
-              source={{
-                uri: "https://plus.unsplash.com/premium_photo-1683141170766-017bf7a2ecb4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              }}
-              style={{ width: "100%", height: 200 }}
+              source={{ uri: "https://via.placeholder.com/100" }}
+              style={{ width: 150, height: 100, borderRadius: 8 }}
               resizeMode="cover"
             />
-            <View className="mt-2">
-              <Text className="mb-1 text-lg font-semibold text-foreground">
-                Entrega de alimentos Mar-2024
+            <View className="ml-4 flex-1">
+              <Text className="font-bold text-foreground">
+                Conoce sobre el BAMX
               </Text>
               <Text className="text-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet consectetur...
               </Text>
             </View>
           </View>
+
+          {/* Community Section */}
+          <View className="mb-4 mt-6">
+            <Text className="mb-4 ml-8 text-3xl font-bold text-foreground">
+              Comunidad
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              className="py-2 pl-8"
+            >
+              <View className="flex-row">
+                <View className="mr-4 w-72">
+                  <View className="rounded-xl bg-card p-4 shadow">
+                    <Image
+                      source={{ uri: "https://via.placeholder.com/300" }}
+                      style={{ width: "100%", height: 180, borderRadius: 12 }}
+                      resizeMode="cover"
+                    />
+                    <Text className="mt-4 text-xl font-bold text-foreground">
+                      Uniendo Manos
+                    </Text>
+                    <Text className="text-base text-foreground">
+                      $275,000 raised
+                    </Text>
+                    <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
+                      <View className="h-full w-3/4 rounded-full bg-primary" />
+                    </View>
+                  </View>
+                </View>
+                <View className="mr-4 w-72">
+                  <View className="rounded-xl bg-card p-4 shadow">
+                    <Image
+                      source={{ uri: "https://via.placeholder.com/300" }}
+                      style={{ width: "100%", height: 180, borderRadius: 12 }}
+                      resizeMode="cover"
+                    />
+                    <Text className="mt-4 text-xl font-bold text-foreground">
+                      Uniendo Manos
+                    </Text>
+                    <Text className="text-base text-foreground">
+                      $275,000 raised
+                    </Text>
+                    <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
+                      <View className="h-full w-3/4 rounded-full bg-primary" />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </ScrollView>
+          </View>
         </View>
+
+        {/* Donate Button */}
+        <TouchableOpacity
+          className={`absolute ${Platform.OS === "ios" ? "bottom-32" : "bottom-6"} right-4 rounded-full bg-primary px-6 py-3 shadow`}
+        >
+          <Text className="text-center font-bold text-white">Dona ahora!</Text>
+        </TouchableOpacity>
       </View>
     </NavigationLayout>
   );
