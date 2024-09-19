@@ -21,7 +21,10 @@ const BottomNavigation = () => {
       style={{ paddingBottom: bottom + 6 }}
     >
       {navItems.map((item, index) => {
-        const isSelected = currentPath === item.href;
+        const isSelected =
+          item.href !== "/"
+            ? currentPath.includes(item.href)
+            : currentPath === item.href;
         return (
           <Link key={index} href={item.href} asChild>
             <TouchableOpacity className="items-center">
