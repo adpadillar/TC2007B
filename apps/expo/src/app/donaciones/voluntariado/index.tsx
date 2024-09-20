@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import NavigationLayout from "../../components/navigation-layout";
+import NavigationLayout from "../../../components/navigation-layout";
 
 export default function Voluntariado() {
   return (

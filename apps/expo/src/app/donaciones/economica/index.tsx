@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useRouter } from "expo-router";
 
-import NavigationLayout from "../../components/navigation-layout";
+import NavigationLayout from "~/components/navigation-layout";
 
 export default function Economica() {
+  const router = useRouter();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [name, setName] = useState("");
@@ -19,6 +21,13 @@ export default function Economica() {
   const [address, setAddress] = useState("");
 
   const predefinedAmounts = [400, 800, 1200, 1600];
+
+  const handleSubmit = () => {
+    // Handle form submission logic here
+    console.log("Form submitted");
+    // Navigate to the payment page
+    router.push(`/donaciones/economica/1/payment`);
+  };
 
   return (
     <NavigationLayout>
@@ -93,6 +102,14 @@ export default function Economica() {
           value={address}
           onChangeText={setAddress}
         />
+        <TouchableOpacity
+          className="rounded-md bg-primary p-4"
+          onPress={handleSubmit}
+        >
+          <Text className="text-center text-lg font-semibold text-white">
+            Enviar
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </NavigationLayout>
   );

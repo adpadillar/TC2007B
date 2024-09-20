@@ -3,7 +3,7 @@ import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { Ionicons } from "@expo/vector-icons";
 
-import NavigationLayout from "../../components/navigation-layout";
+import NavigationLayout from "~/components/navigation-layout";
 
 export default function Especie() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
