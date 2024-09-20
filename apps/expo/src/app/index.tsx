@@ -7,11 +7,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import NavigationLayout from "../components/navigation-layout";
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <NavigationLayout safeArea={false}>
       <View className="flex-1">
@@ -30,7 +33,11 @@ export default function Index() {
                 <Text className="text-lg text-white">Axel Padilla</Text>
               </View>
             </View>
-            <Ionicons name="settings-outline" size={24} color="#fff" />
+            <TouchableOpacity
+              onPress={() => router.push("/perfil/configuracion")}
+            >
+              <Ionicons name="settings-outline" size={24} color="#fff" />
+            </TouchableOpacity>
           </View>
         </View>
 
