@@ -9,20 +9,22 @@ const paymentMethods: { name: string; image: ImageSourcePropType }[] = [
   {
     name: "PayPal",
     image:
-      require("../../../../../../assets/paypal.png") as ImageSourcePropType,
+      require("../../../../../../../assets/paypal.png") as ImageSourcePropType,
   },
   {
     name: "Visa",
-    image: require("../../../../../../assets/visa.png") as ImageSourcePropType,
+    image:
+      require("../../../../../../../assets/visa.png") as ImageSourcePropType,
   },
   {
     name: "Amex",
-    image: require("../../../../../../assets/amex.png") as ImageSourcePropType,
+    image:
+      require("../../../../../../../assets/amex.png") as ImageSourcePropType,
   },
   {
     name: "Mastercard",
     image:
-      require("../../../../../../assets/mastercard.png") as ImageSourcePropType,
+      require("../../../../../../../assets/mastercard.png") as ImageSourcePropType,
   },
 ];
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 
-import NavigationLayout from "../../components/navigation-layout";
+import NavigationLayout from "../../../components/navigation-layout";
 
 const ImpactCard = ({
   title,

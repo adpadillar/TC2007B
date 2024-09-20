@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import NavigationLayout from "../../components/navigation-layout";
+import NavigationLayout from "../../../components/navigation-layout";
 
 export default function Perfil() {
   const router = useRouter();

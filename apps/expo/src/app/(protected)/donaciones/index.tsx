@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import NavigationLayout from "../../components/navigation-layout";
+import NavigationLayout from "../../../components/navigation-layout";
 
 const colors = {
   voluntariado: "#4CAF50", // Green
