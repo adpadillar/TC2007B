@@ -10,10 +10,14 @@ import {
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
+import { api } from "~/utils/api";
 import NavigationLayout from "../../components/navigation-layout";
 
 export default function Index() {
   const router = useRouter();
+  const { data: projects } = api.projects.get.useQuery(undefined, {
+    refetchInterval: 5_000,
+  });
 
   return (
     <NavigationLayout safeArea={false}>
@@ -78,42 +82,36 @@ export default function Index() {
               className="py-2 pl-8"
             >
               <View className="flex-row">
-                <View className="mr-4 w-72">
-                  <View className="rounded-xl bg-card p-4 shadow">
-                    <Image
-                      source={{ uri: "https://via.placeholder.com/300" }}
-                      style={{ width: "100%", height: 180, borderRadius: 12 }}
-                      resizeMode="cover"
-                    />
-                    <Text className="mt-4 text-xl font-bold text-foreground">
-                      Uniendo Manos
-                    </Text>
-                    <Text className="text-base text-foreground">
-                      $275,000 raised
-                    </Text>
-                    <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
-                      <View className="h-full w-3/4 rounded-full bg-primary" />
+                {projects?.map((project) => {
+                  return (
+                    <View key={project.id} className="mr-4 w-72">
+                      <View className="rounded-xl bg-card p-4 shadow">
+                        <Image
+                          source={{ uri: project.imageUrl }}
+                          style={{
+                            width: "100%",
+                            height: 180,
+                            borderRadius: 12,
+                          }}
+                          resizeMode="cover"
+                        />
+                        <Text className="mt-4 text-xl font-bold text-foreground">
+                          {project.title}
+                        </Text>
+                        <Text className="text-base text-foreground">
+                          {project.raised.toLocaleString("es-MX", {
+                            style: "currency",
+                            currency: "MXN",
+                          })}{" "}
+                          raised
+                        </Text>
+                        <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
+                          <View className="h-full w-3/4 rounded-full bg-primary" />
+                        </View>
+                      </View>
                     </View>
-                  </View>
-                </View>
-                <View className="mr-4 w-72">
-                  <View className="rounded-xl bg-card p-4 shadow">
-                    <Image
-                      source={{ uri: "https://via.placeholder.com/300" }}
-                      style={{ width: "100%", height: 180, borderRadius: 12 }}
-                      resizeMode="cover"
-                    />
-                    <Text className="mt-4 text-xl font-bold text-foreground">
-                      Uniendo Manos
-                    </Text>
-                    <Text className="text-base text-foreground">
-                      $275,000 raised
-                    </Text>
-                    <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
-                      <View className="h-full w-3/4 rounded-full bg-primary" />
-                    </View>
-                  </View>
-                </View>
+                  );
+                })}
               </View>
             </ScrollView>
           </View>
