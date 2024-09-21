@@ -4,6 +4,7 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
+    "test": "jest --watchAll --collectCoverage",
     "clean": "git clean -xdf .cache .expo .turbo android ios node_modules",
     "dev": "expo start -c",
     "android": "expo run:android",
@@ -52,9 +53,13 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
+    "@testing-library/react-native": "^12.7.2",
     "@types/babel__core": "^7.20.5",
+    "@types/jest": "^29.5.13",
     "@types/react": "catalog:react18",
     "eslint": "catalog:",
+    "jest": "^29.7.0",
+    "jest-expo": "^51.0.4",
     "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
@@ -62,5 +67,11 @@
   "prettier": "@acme/prettier-config",
   "resolutions": {
     "@shopify/flash-list/tslib": "2.6.1"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
+    ]
   }
 }
