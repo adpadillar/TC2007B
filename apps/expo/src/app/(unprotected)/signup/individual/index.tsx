@@ -45,6 +45,7 @@ export default function SignUpIndividual() {
             value={password}
             onChangeText={setPassword}
             secureTextEntry
+            autoCorrect={false}
           />
           <TextInput
             className="rounded-md border border-input px-2 py-3 text-foreground"
@@ -52,6 +53,7 @@ export default function SignUpIndividual() {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             secureTextEntry
+            autoCorrect={false}
           />
         </View>
 

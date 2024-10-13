@@ -34,7 +34,7 @@ export default function Index() {
                 <Text className="text-lg font-bold text-white">
                   ¡Bienvenido de nuevo!
                 </Text>
-                <Text className="text-lg text-white">Axel Padilla</Text>
+                <Text className="text-lg text-white">Axel Padillaaaa</Text>
               </View>
             </View>
             <TouchableOpacity
