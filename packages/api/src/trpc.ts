@@ -10,6 +10,7 @@ import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import type { getAuth } from "@acme/auth/nextjs";
 import { db } from "@acme/db/client";
 
 /**
@@ -33,9 +34,12 @@ import { db } from "@acme/db/client";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = () => {
+export const createTRPCContext = (
+  auth: Awaited<ReturnType<typeof getAuth>>,
+) => {
   return {
     db,
+    auth,
   };
 };
 

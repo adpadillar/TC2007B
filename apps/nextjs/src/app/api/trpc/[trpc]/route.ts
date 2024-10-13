@@ -1,3 +1,5 @@
+import type { NextRequest } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 import { appRouter, createTRPCContext } from "@acme/api";
@@ -23,12 +25,15 @@ export const OPTIONS = () => {
   return response;
 };
 
-export const handler = (req: Request) => {
+export const handler = (req: NextRequest) => {
   return fetchRequestHandler({
     endpoint: "/api/trpc",
     router: appRouter,
     req,
-    createContext: () => createTRPCContext(),
+    createContext: () => {
+      const auth = getAuth(req);
+      return createTRPCContext(auth);
+    },
   });
 };
 

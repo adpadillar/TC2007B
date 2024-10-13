@@ -1,0 +1,31 @@
+{
+  "name": "@acme/auth",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "exports": {
+    "./nextjs": {
+      "types": "./dist/nextjs.d.ts",
+      "default": "./src/nextjs.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.tsx"
+    },
+    "./webhook": {
+      "types": "./dist/webhook.d.ts",
+      "default": "./src/webhook.ts"
+    }
+  },
+  "devDependencies": {
+    "@acme/tsconfig": "workspace:*",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@acme/db": "workspace:*",
+    "@clerk/nextjs": "^5.2.8",
+    "zod": "^3.23.3"
+  }
+}
