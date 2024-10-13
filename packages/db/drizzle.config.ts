@@ -10,8 +10,7 @@ if (!process.env.DATABASE_AUTH_TOKEN) {
 
 export default {
   schema: "./src/schema.ts",
-  driver: "turso",
-  dialect: "sqlite",
+  dialect: "turso",
   dbCredentials: {
     url: process.env.DATABASE_URL,
     authToken: process.env.DATABASE_AUTH_TOKEN,
