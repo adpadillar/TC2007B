@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
+import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 
 import NavigationLayout from "../../../../components/navigation-layout";
@@ -15,6 +16,7 @@ const ConfigurationItem = ({ icon, text }: { icon: string; text: string }) => (
 
 export default function Configuracion() {
   const router = useRouter();
+  const { signOut } = useAuth();
 
   return (
     <NavigationLayout>
@@ -64,9 +66,7 @@ export default function Configuracion() {
 
         <TouchableOpacity
           className="mt-8 rounded-lg bg-primary py-3"
-          onPress={() => {
-            /* Handle logout */
-          }}
+          onPress={() => signOut()}
         >
           <Text className="text-center font-semibold text-white">
             Cerrar sesión

@@ -1,12 +1,30 @@
-import React, { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useCallback } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, useRouter } from "expo-router";
+import { useOAuth } from "@clerk/clerk-expo";
 
 export default function Login() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+
+  const handleSignInWithGoogle = useCallback(async () => {
+    try {
+      const { createdSessionId, setActive } = await startOAuthFlow();
+      if (createdSessionId) {
+        await setActive?.({ session: createdSessionId });
+        router.push("/(protected)/");
+      } else {
+        // Modify this code to use signIn or signUp to set this missing requirements you set in your dashboard.
+        throw new Error(
+          "There are unmet requirements, modifiy this else to handle them",
+        );
+      }
+    } catch (err) {
+      console.log(JSON.stringify(err, null, 2));
+      console.log("error signing in", err);
+    }
+  }, [startOAuthFlow, router]);
 
   return (
     <SafeAreaView className="flex-1 bg-background">
@@ -26,29 +44,11 @@ export default function Login() {
           </Text>
         </View>
 
-        <View className="mt-4 flex flex-col gap-y-3">
-          <TextInput
-            className="rounded-md border border-input px-2 py-3 text-foreground"
-            placeholder="Correo electrónico"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-          />
-          <TextInput
-            className="rounded-md border border-input px-2 py-3 text-foreground"
-            placeholder="Contraseña"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-        </View>
+        <View className="mt-4 flex flex-col gap-y-3"></View>
 
         <TouchableOpacity
           className="mt-20 rounded-md bg-primary p-3"
-          onPress={() => {
-            // Handle login logic here
-            router.push("/");
-          }}
+          onPress={handleSignInWithGoogle}
         >
           <Text className="text-center text-lg font-semibold text-primary-foreground">
             Iniciar sesión
