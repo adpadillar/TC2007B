@@ -15,9 +15,7 @@ import NavigationLayout from "../../components/navigation-layout";
 
 export default function Index() {
   const router = useRouter();
-  const { data: projects } = api.projects.get.useQuery(undefined, {
-    refetchInterval: 5_000,
-  });
+  const { data: projects } = api.projects.get.useQuery();
 
   return (
     <NavigationLayout safeArea={false}>
