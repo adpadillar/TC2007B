@@ -15,7 +15,8 @@ import NavigationLayout from "../../components/navigation-layout";
 
 export default function Index() {
   const router = useRouter();
-  const { data: projects } = api.projects.get.useQuery();
+  const { data: projects, isLoading: projectsLoading } =
+    api.projects.get.useQuery();
 
   return (
     <NavigationLayout safeArea={false}>
@@ -82,6 +83,19 @@ export default function Index() {
               className="py-2 pl-8"
             >
               <View className="flex-row">
+                {projectsLoading &&
+                  [1, 2, 3, 4].map((n) => (
+                    <View key={n} className="mr-4 w-72">
+                      <View className="rounded-xl bg-card p-4 shadow">
+                        <View className="h-180 w-full animate-pulse rounded-3xl bg-gray-200"></View>
+                        <View className="mt-4 h-10 w-full animate-pulse bg-gray-200"></View>
+                        <View className="mt-2 h-10 w-full animate-pulse bg-gray-200"></View>
+                        <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
+                          <View className="h-full w-3/4 animate-pulse rounded-full bg-gray-300"></View>
+                        </View>
+                      </View>
+                    </View>
+                  ))}
                 {projects?.map((project) => {
                   return (
                     <View key={project.id} className="mr-4 w-72">
@@ -118,7 +132,10 @@ export default function Index() {
         </View>
 
         {/* Donate Button */}
-        <TouchableOpacity className="bg-greenBDA absolute bottom-6 right-4 rounded-full px-6 py-3 shadow">
+        <TouchableOpacity
+          onPress={() => router.push("/(protected)/donaciones")}
+          className="bg-greenBDA absolute bottom-6 right-4 rounded-full px-6 py-3 shadow"
+        >
           <Text className="font-poppins-bold text-center text-white">
             Dona ahora!
           </Text>
