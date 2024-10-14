@@ -134,7 +134,8 @@ export default function Index() {
         {/* Donate Button */}
         <TouchableOpacity
           onPress={() => router.push("/(protected)/donaciones")}
-          className="bg-greenBDA absolute bottom-6 right-4 rounded-full px-6 py-3 shadow">
+          className="bg-greenBDA absolute bottom-6 right-4 rounded-full px-6 py-3 shadow"
+        >
           <Text className="font-poppins-bold text-center text-white">
             Dona ahora!
           </Text>
