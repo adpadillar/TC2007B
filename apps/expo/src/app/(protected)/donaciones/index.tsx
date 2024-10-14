@@ -6,20 +6,20 @@ import { Ionicons } from "@expo/vector-icons";
 import NavigationLayout from "../../../components/navigation-layout";
 
 const colors = {
-  voluntariado: "#4CAF50", // Green
-  especie: "#FFC107", // Amber
-  economica: "#2196F3", // Blue
-  historial: "#9C27B0", // Purple
+  voluntariado: "#00953b", // Green
+  especie: "#f19800", // Amber
+  economica: "#ce0e2d", // red
+  historial: "#5c5c60", // Purple
 };
 
 export default function Donaciones() {
   return (
     <NavigationLayout>
-      <View className="px-8 py-8">
-        <Text className="mb-4 text-3xl font-bold text-foreground">
+      <View className="px-8 pt-14">
+        <Text className="font-poppins-bold text-darkGrayBDA mb-3 text-3xl">
           ¿Cómo donar?
         </Text>
-        <Text className="mb-6 text-lg text-foreground">
+        <Text className="text-darkGrayBDA font-poppins-regular mb-7 text-base">
           Tenemos 3 maneras principales como puedes apoyarnos:
         </Text>
 
@@ -39,10 +39,12 @@ export default function Donaciones() {
                 color={colors.voluntariado}
               />
               <View className="ml-4 flex-1">
-                <Text className="text-lg font-semibold text-foreground">
+                <Text className="font-poppins-semibold text-darkGrayBDA text-darkGrayBDA text-lg">
                   Donación de tiempo
                 </Text>
-                <Text className="text-foreground">Hazte voluntario</Text>
+                <Text className="font-poppins-regular text-darkGrayBDA text-base">
+                  Hazte voluntario
+                </Text>
               </View>
               <Ionicons
                 name="chevron-forward"
@@ -59,10 +61,10 @@ export default function Donaciones() {
             >
               <Ionicons name="gift-outline" size={24} color={colors.especie} />
               <View className="ml-4 flex-1">
-                <Text className="text-lg font-semibold text-foreground">
+                <Text className="font-poppins-semibold text-darkGrayBDA text-lg">
                   Donación en especie
                 </Text>
-                <Text className="text-foreground">
+                <Text className="text-darkGrayBDA text-base">
                   Dona comida u otros artículos
                 </Text>
               </View>
@@ -85,10 +87,12 @@ export default function Donaciones() {
                 color={colors.economica}
               />
               <View className="ml-4 flex-1">
-                <Text className="text-lg font-semibold text-foreground">
+                <Text className="font-poppins-semibold text-darkGrayBDA text-lg">
                   Donación económica
                 </Text>
-                <Text className="text-foreground">Apadrina a una familia</Text>
+                <Text className="text-darkGrayBDA text-base">
+                  Apadrina a una familia
+                </Text>
               </View>
               <Ionicons
                 name="chevron-forward"
@@ -100,7 +104,7 @@ export default function Donaciones() {
         </View>
 
         {/* Donation History */}
-        <Text className="mb-4 text-2xl font-bold text-foreground">
+        <Text className="font-poppins-bold text-darkGrayBDA mb-6 text-2xl">
           Tu historial de donativos
         </Text>
         <View>
@@ -114,10 +118,12 @@ export default function Donaciones() {
               color={colors.historial}
             />
             <View className="ml-4 flex-1">
-              <Text className="text-lg font-semibold text-foreground">
+              <Text className="font-poppins-semibold text-darkGrayBDA text-lg">
                 Donación de tiempo
               </Text>
-              <Text className="text-foreground">50 horas de voluntariado</Text>
+              <Text className="text-darkGrayBDA font-poppins-regular">
+                50 horas de voluntariado
+              </Text>
             </View>
             <Ionicons
               name="chevron-forward"
@@ -132,10 +138,12 @@ export default function Donaciones() {
           >
             <Ionicons name="cash-outline" size={24} color={colors.historial} />
             <View className="ml-4 flex-1">
-              <Text className="text-lg font-semibold text-foreground">
+              <Text className="font-poppins-semibold text-darkGrayBDA text-lg">
                 Donación económica
               </Text>
-              <Text className="text-foreground">350 MXN</Text>
+              <Text className="text-darkGrayBDA font-poppins-regular">
+                350 MXN
+              </Text>
             </View>
             <Ionicons
               name="chevron-forward"
