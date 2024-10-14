@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Image,
   Modal,
   Pressable,
   ScrollView,
