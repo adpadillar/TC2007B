@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Image,
   Modal,
   Pressable,
   ScrollView,
@@ -28,7 +27,7 @@ interface ProjectDetailsScreenProps {
   vacancies: number;
 }
 
-const projectDetailsScreen = ({
+const ProjectDetailsScreen = ({
   title,
   description,
   details,
@@ -65,11 +64,11 @@ const projectDetailsScreen = ({
       <View className="items-center">
         <Text className="mb-4 text-xl font-bold">{title}</Text>
         <View className="mb-4 h-48 w-full rounded-lg bg-gray-300">
-          <Image
+          {/* <Image
             source={require("./assets/image-placeholder.png")} // Replace with your image source
             className="h-full w-full"
             resizeMode="contain"
-          />
+          /> */}
         </View>
       </View>
 
@@ -284,4 +283,4 @@ const projectDetailsScreen = ({
   );
 };
 
-export default projectDetailsScreen;
+export default ProjectDetailsScreen;
