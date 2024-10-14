@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { useRouter } from "expo-router";
 
 import type { RouterOutputs } from "@acme/api";
 
@@ -10,22 +11,32 @@ const ImpactCard = ({
   title,
   imageUrl,
   description,
-}: RouterOutputs["projects"]["get"][number]) => (
-  <View className="mb-4 rounded-lg bg-white p-4 shadow-md">
-    <View className="mb-3 h-72 w-full overflow-hidden rounded-lg bg-gray-200">
-      <Image
-        source={{ uri: imageUrl }}
-        className="h-full w-full"
-        resizeMode="cover"
-      />
-    </View>
-    <Text className="mb-2 text-lg font-semibold text-foreground">{title}</Text>
-    <Text className="text-sm text-foreground">
-      {description ??
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet consectetur adipiscing elit pellentesque."}
-    </Text>
-  </View>
-);
+  id,
+}: RouterOutputs["projects"]["list"][number]) => {
+  const router = useRouter();
+
+  return (
+    <TouchableOpacity
+      onPress={() => router.push(`/(protected)/proyectos/${id}`)}
+      className="mb-4 rounded-lg bg-white p-4 shadow-md"
+    >
+      <View className="mb-3 h-72 w-full overflow-hidden rounded-lg bg-gray-200">
+        <Image
+          source={{ uri: imageUrl }}
+          className="h-full w-full"
+          resizeMode="cover"
+        />
+      </View>
+      <Text className="mb-2 text-lg font-semibold text-foreground">
+        {title}
+      </Text>
+      <Text className="text-sm text-foreground">
+        {description ??
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet consectetur adipiscing elit pellentesque."}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 const ImpactCardLoading = () => (
   <View className="mb-4 rounded-lg bg-white p-4 shadow-md">
@@ -39,7 +50,7 @@ const ImpactCardLoading = () => (
 
 export default function Impacto() {
   const { data: projects, isLoading: projectsLoading } =
-    api.projects.get.useQuery();
+    api.projects.list.useQuery();
 
   return (
     <NavigationLayout>

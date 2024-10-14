@@ -24,6 +24,7 @@ export const Project = createTable("project", {
   goal: integer("goal").notNull(),
   raised: integer("raised").notNull().default(0),
   description: text("description"),
+  content: text("content"),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
     .$defaultFn(() => new Date()),

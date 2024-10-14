@@ -16,7 +16,7 @@ import NavigationLayout from "../../components/navigation-layout";
 export default function Index() {
   const router = useRouter();
   const { data: projects, isLoading: projectsLoading } =
-    api.projects.get.useQuery();
+    api.projects.list.useQuery();
 
   const currentUser = api.auth.currentUser.useQuery();
 
@@ -108,7 +108,13 @@ export default function Index() {
                   ))}
                 {projects?.map((project) => {
                   return (
-                    <View key={project.id} className="mr-4 w-72">
+                    <TouchableOpacity
+                      onPress={() =>
+                        router.push(`/(protected)/proyectos/${project.id}`)
+                      }
+                      key={project.id}
+                      className="mr-4 w-72"
+                    >
                       <View className="rounded-xl bg-card p-4 shadow">
                         <Image
                           source={{ uri: project.imageUrl }}
@@ -127,13 +133,13 @@ export default function Index() {
                             style: "currency",
                             currency: "MXN",
                           })}{" "}
-                          raised
+                          recaudado
                         </Text>
                         <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
                           <View className="bg-redBDA h-full w-3/4 rounded-full" />
                         </View>
                       </View>
-                    </View>
+                    </TouchableOpacity>
                   );
                 })}
               </View>
