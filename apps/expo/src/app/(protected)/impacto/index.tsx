@@ -12,7 +12,7 @@ const ImpactCard = ({
   description,
 }: RouterOutputs["projects"]["get"][number]) => (
   <View className="mb-4 rounded-lg bg-white p-4 shadow-md">
-    <View className="mb-3 h-40 w-full overflow-hidden rounded-lg bg-gray-200">
+    <View className="mb-3 h-72 w-full overflow-hidden rounded-lg bg-gray-200">
       <Image
         source={{ uri: imageUrl }}
         className="h-full w-full"

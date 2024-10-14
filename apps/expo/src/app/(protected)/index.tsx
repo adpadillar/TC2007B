@@ -28,7 +28,11 @@ export default function Index() {
           <View className="flex-row items-center justify-between">
             <View className="flex-row items-center">
               <Image
-                source={{ uri: currentUser.data?.imageUrl ?? "https://via.placeholder.com/40" }}
+                source={{
+                  uri:
+                    currentUser.data?.imageUrl ??
+                    "https://via.placeholder.com/40",
+                }}
                 style={{ width: 40, height: 40, borderRadius: 20 }}
               />
               <View className="ml-2">
@@ -60,16 +64,20 @@ export default function Index() {
           {/* Info Card */}
           <View className="mx-8 mb-4 flex-row rounded-md bg-card p-4 shadow">
             <Image
-              source={{ uri: "https://via.placeholder.com/100" }}
+              className="mr-2"
+              source={{
+                uri: "https://bamx.org.mx/wp-content/uploads/2023/10/RED-BAMX.png",
+              }}
               style={{ width: 150, height: 100, borderRadius: 8 }}
-              resizeMode="cover"
+              resizeMode="contain"
             />
             <View className="ml-4 flex-1">
               <Text className="text-darkGrayBDA font-poppins-bold text-md mb-1">
                 Conoce sobre el BAMX
               </Text>
-              <Text className="text-darkGrayBDA font-poppins-regular">
-                Lorem ipsum dolor sit amet consectetur...
+              <Text className="text-darkGrayBDA font-poppins-regular text-sm">
+                Somos una OSC sin fines de lucro y apartidista, nuestra red está
+                compuesta por...
               </Text>
             </View>
           </View>
