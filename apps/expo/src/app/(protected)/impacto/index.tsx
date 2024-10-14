@@ -18,7 +18,7 @@ const ImpactCard = ({
   return (
     <TouchableOpacity
       onPress={() => router.push(`/(protected)/proyectos/${id}`)}
-      className="mb-4 rounded-lg bg-white p-4 shadow-md"
+      className="mb-4 rounded-lg bg-white p-4 shadow-sm"
     >
       <View className="mb-3 h-72 w-full overflow-hidden rounded-lg bg-gray-200">
         <Image
@@ -27,10 +27,10 @@ const ImpactCard = ({
           resizeMode="cover"
         />
       </View>
-      <Text className="mb-2 text-lg font-semibold text-foreground">
+      <Text className="font-poppins-semibold mb-2 text-lg text-foreground">
         {title}
       </Text>
-      <Text className="text-sm text-foreground">
+      <Text className="font-poppins-regular text-sm text-foreground">
         {description ??
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet consectetur adipiscing elit pellentesque."}
       </Text>
@@ -39,7 +39,7 @@ const ImpactCard = ({
 };
 
 const ImpactCardLoading = () => (
-  <View className="mb-4 rounded-lg bg-white p-4 shadow-md">
+  <View className="mb-4 rounded-lg bg-white p-4">
     <View className="mb-3 h-40 w-full animate-pulse overflow-hidden rounded-lg bg-gray-200">
       <View className="h-full w-full bg-gray-300"></View>
     </View>
@@ -54,8 +54,8 @@ export default function Impacto() {
 
   return (
     <NavigationLayout>
-      <ScrollView className="mb-20 flex-1 px-4 py-6">
-        <Text className="mb-12 text-2xl font-bold text-foreground">
+      <ScrollView className="px-8 pb-20 pt-14">
+        <Text className="font-poppins-bold mb-10 text-3xl text-foreground">
           Tu impacto
         </Text>
         {projectsLoading &&

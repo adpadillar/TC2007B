@@ -18,13 +18,22 @@ export default function ProyectoScreen() {
           style={{ width: "100%", height: 400 }}
           resizeMode="cover"
         />
+        <View className="h-[0.5px] w-full rounded-full bg-gray-300"></View>
+
         <View className="flex flex-col gap-y-4 px-10 pt-8">
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "bold",
+              fontFamily: "Poppins_600SemiBold",
+            }}
+          >
             {project.data?.title}
           </Text>
           <Text
             style={{
               fontSize: 14,
+              fontFamily: "Poppins_400Regular",
               fontWeight: "600",
               marginTop: 5,
               color: "#666",
@@ -39,6 +48,7 @@ export default function ProyectoScreen() {
           <Text
             style={{
               fontSize: 24,
+              fontFamily: "Poppins_700Bold",
               fontWeight: "bold",
               color: "#666",
               marginBottom: 10,
@@ -58,6 +68,7 @@ export default function ProyectoScreen() {
           <Text
             style={{
               fontSize: 14,
+              fontFamily: "Poppins_500Medium",
               fontWeight: "600",
               marginTop: 5,
               color: "#666",
@@ -74,6 +85,7 @@ export default function ProyectoScreen() {
         <Text
           style={{
             fontSize: 20,
+            fontFamily: "Poppins_700Bold",
             fontWeight: "bold",
             color: "white",
             textAlign: "center",

@@ -29,16 +29,16 @@ export default function Perfil() {
           }}
           className="h-24 w-24 rounded-full"
         />
-        <Text className="mt-4 text-2xl font-bold text-foreground">
+        <Text className="font-poppins-semibold mt-4 text-xl text-foreground">
           {currentUser.data?.firstName} {currentUser.data?.lastName}
         </Text>
-        <Text className="text-sm text-muted-foreground">
+        <Text className="font-poppins-regular text-sm text-gray-400">
           Miembro por 3 semanas
         </Text>
       </View>
 
       <View className="mt-8 px-6">
-        <Text className="mb-4 text-lg font-semibold text-foreground">
+        <Text className="font-poppins-semibold mb-4 text-lg text-foreground">
           Antes de comenzar
         </Text>
         <View className="flex flex-col gap-y-2">
@@ -64,17 +64,19 @@ export default function Perfil() {
                   // This is a hack to make the type checker happy
                   name={item.icon as unknown as undefined}
                   size={24}
-                  color="#22c55e"
+                  color="#00953b"
                 />
               </View>
               <Text
-                className={`flex-1 text-foreground ${item.done ? "line-through" : ""}`}
+                className={`font-poppins-regular flex-1 text-foreground ${item.done ? "line-through" : ""}`}
               >
                 {item.text}
               </Text>
               {!item.done && (
                 <TouchableOpacity>
-                  <Text className="text-yellowBDA">Completar</Text>
+                  <Text className="font-poppins-regular text-yellowBDA">
+                    Completar
+                  </Text>
                 </TouchableOpacity>
               )}
             </View>
@@ -83,12 +85,14 @@ export default function Perfil() {
       </View>
 
       <View className="mt-8 px-6">
-        <Text className="mb-4 text-lg font-semibold text-foreground">
+        <Text className="font-poppins-semibold mb-4 text-lg text-foreground">
           Estadísticas
         </Text>
         <View className="rounded-lg bg-card p-4 shadow">
-          <Text className="text-2xl font-bold text-foreground">534</Text>
-          <Text className="text-sm text-muted-foreground">
+          <Text className="font-poppins-semibold text-2xl text-foreground">
+            534
+          </Text>
+          <Text className="font-poppins-regular text-sm text-muted-foreground">
             horas de voluntariado
           </Text>
           <View className="mt-2 h-2 w-full rounded-full bg-gray-200">
@@ -98,7 +102,7 @@ export default function Perfil() {
       </View>
 
       <View className="mt-8 px-6">
-        <Text className="mb-4 text-lg font-semibold text-foreground">
+        <Text className="font-poppins-semibold mb-4 text-lg text-foreground">
           Tus recompensas
         </Text>
         <View className="flex flex-col gap-y-4">
@@ -127,10 +131,10 @@ export default function Perfil() {
                 />
               </View>
               <View className="flex-1">
-                <Text className="text-lg font-semibold text-foreground">
+                <Text className="font-poppins-medium text-lg font-semibold text-foreground">
                   {item.text}
                 </Text>
-                <Text className="text-sm text-muted-foreground">
+                <Text className="font-poppins-regular text-sm text-muted-foreground">
                   {item.subtext}
                 </Text>
               </View>

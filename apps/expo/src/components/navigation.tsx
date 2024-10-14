@@ -31,12 +31,12 @@ const BottomNavigation = () => {
               <Ionicons
                 name={item.icon}
                 size={24}
-                color={isSelected ? "#f19800" : "#000"}
+                color={isSelected ? "#00953b" : "#000"}
                 style={{ fontWeight: isSelected ? "900" : "normal" }}
               />
               <Text
                 className={`mt-1 text-xs text-foreground ${
-                  isSelected ? "text-yellowBDA font-extrabold" : "font-normal"
+                  isSelected ? "text-greenBDA font-extrabold" : "font-normal"
                 }`}
               >
                 {item.name}

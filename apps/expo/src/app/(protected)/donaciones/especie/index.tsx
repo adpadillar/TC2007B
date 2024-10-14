@@ -119,15 +119,15 @@ export default function Especie() {
 
   return (
     <NavigationLayout>
-      <View className="flex-1 px-6 py-8">
-        <Text className="mb-6 text-2xl font-bold text-foreground">
+      <View className="flex-1 px-8 py-8 pt-14">
+        <Text className="font-poppins-bold mb-6 text-2xl text-foreground">
           Donaciones en especie
         </Text>
-        <Text className="mb-4 text-lg text-foreground">
+        <Text className="font-poppins-regular mb-6 text-base text-foreground">
           Selecciona el tipo de producto que deseas donar:
         </Text>
 
-        <View className="mb-6">
+        <View className="mb-10">
           <View className="flex-row justify-between">
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
@@ -138,7 +138,9 @@ export default function Especie() {
               onPress={() => setSelectedOption("food")}
             >
               <Ionicons name="fast-food-outline" size={60} color="#000" />
-              <Text className="mt-2 text-foreground">Alimentos</Text>
+              <Text className="font-poppins-regular mt-2 text-foreground">
+                Alimentos
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
@@ -149,7 +151,9 @@ export default function Especie() {
               onPress={() => setSelectedOption("products")}
             >
               <Ionicons name="cube-outline" size={60} color="#000" />
-              <Text className="mt-2 text-foreground">Productos</Text>
+              <Text className="font-poppins-regular mt-2 text-foreground">
+                Productos
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
@@ -160,13 +164,15 @@ export default function Especie() {
               onPress={() => setSelectedOption("discounts")}
             >
               <Ionicons name="pricetag-outline" size={60} color="#000" />
-              <Text className="mt-2 text-foreground">Descuentos</Text>
+              <Text className="font-poppins-regular mt-2 text-foreground">
+                Descuentos
+              </Text>
             </TouchableOpacity>
           </View>
           <MaybeErrorText error={selectedOptionError} />
         </View>
 
-        <Text className="mb-4 text-lg text-foreground">
+        <Text className="font-poppins-regular mb-8 text-base text-foreground">
           Deseas donar como individuo o empresa
         </Text>
 
@@ -174,7 +180,7 @@ export default function Especie() {
           <View className="mb-4">
             <TextInput
               placeholder="Tu empresa/ Tu nombre"
-              className="rounded-md border border-gray-300 p-3"
+              className="font-poppins-regular rounded-md border border-gray-300 p-3"
               value={company}
               onChangeText={setCompany}
             />
@@ -183,7 +189,7 @@ export default function Especie() {
           <View className="mb-4">
             <TextInput
               placeholder="¿Qué producto quieres donar?"
-              className="rounded-md border border-gray-300 p-3"
+              className="font-poppins-regular rounded-md border border-gray-300 p-3"
               value={product}
               onChangeText={setProduct}
             />
@@ -191,7 +197,9 @@ export default function Especie() {
           </View>
           {selectedOption === "food" && (
             <View className="mb-4">
-              <Text className="mb-2 text-foreground">¿Eres productor?</Text>
+              <Text className="font-poppins-regular mb-2 text-foreground">
+                ¿Eres productor?
+              </Text>
               <SelectList
                 setSelected={(val: string) => setProducer(val)}
                 data={producerOptions}
@@ -207,7 +215,7 @@ export default function Especie() {
           <View className="mb-4">
             <TextInput
               placeholder="Compártenos tu correo electrónico"
-              className="rounded-md border border-gray-300 p-3"
+              className="font-poppins-regular rounded-md border border-gray-300 p-3"
               value={email}
               onChangeText={setEmail}
             />
@@ -218,9 +226,9 @@ export default function Especie() {
         <TouchableOpacity
           onPress={handleSubmit}
           disabled={submitForm.isPending}
-          className="items-center rounded-md bg-primary py-3"
+          className="bg-greenBDA items-center rounded-md py-3"
         >
-          <Text className="text-lg font-bold text-white">
+          <Text className="font-poppins-bold text-lg text-white">
             {submitForm.isPending ? "Enviando..." : "Enviar"}
           </Text>
         </TouchableOpacity>
