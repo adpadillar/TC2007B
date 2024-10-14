@@ -3,10 +3,12 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
+import { api } from "~/utils/api";
 import NavigationLayout from "../../../components/navigation-layout";
 
 export default function Perfil() {
   const router = useRouter();
+  const currentUser = api.auth.currentUser.useQuery();
 
   return (
     <NavigationLayout>
@@ -21,11 +23,14 @@ export default function Perfil() {
       </View>
       <View className="-translate-y-4 items-center">
         <Image
-          source={{ uri: "https://via.placeholder.com/100" }}
+          source={{
+            uri:
+              currentUser.data?.imageUrl ?? "https://via.placeholder.com/100",
+          }}
           className="h-24 w-24 rounded-full"
         />
         <Text className="mt-4 text-2xl font-bold text-foreground">
-          John Doe
+          {currentUser.data?.firstName} {currentUser.data?.lastName}
         </Text>
         <Text className="text-sm text-muted-foreground">
           Miembro por 3 semanas

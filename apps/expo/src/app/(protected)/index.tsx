@@ -130,7 +130,10 @@ export default function Index() {
         </View>
 
         {/* Donate Button */}
-        <TouchableOpacity className="absolute bottom-6 right-4 rounded-full bg-primary px-6 py-3 shadow">
+        <TouchableOpacity
+          onPress={() => router.push("/(protected)/donaciones")}
+          className="absolute bottom-6 right-4 rounded-full bg-primary px-6 py-3 shadow"
+        >
           <Text className="text-center font-bold text-white">Dona ahora!</Text>
         </TouchableOpacity>
       </View>
