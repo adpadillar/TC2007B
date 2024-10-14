@@ -18,6 +18,8 @@ export default function Index() {
   const { data: projects, isLoading: projectsLoading } =
     api.projects.get.useQuery();
 
+  const currentUser = api.auth.currentUser.useQuery();
+
   return (
     <NavigationLayout safeArea={false}>
       <View className="flex-1">
@@ -26,7 +28,7 @@ export default function Index() {
           <View className="flex-row items-center justify-between">
             <View className="flex-row items-center">
               <Image
-                source={{ uri: "https://via.placeholder.com/40" }}
+                source={{ uri: currentUser.data?.imageUrl ?? "https://via.placeholder.com/40" }}
                 style={{ width: 40, height: 40, borderRadius: 20 }}
               />
               <View className="ml-2">
@@ -34,7 +36,7 @@ export default function Index() {
                   ¡Bienvenido de nuevo!
                 </Text>
                 <Text className="font-poppins-regular text-lg text-white">
-                  Axel Padillaaaa
+                  {currentUser.data?.firstName} {currentUser.data?.lastName}
                 </Text>
               </View>
             </View>
