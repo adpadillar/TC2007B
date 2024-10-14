@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Image,
   ScrollView,
   Text,
   TextInput,
@@ -9,6 +8,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+import CardComponent from "~/components/cardComponent";
 import NavigationLayout from "../../../../components/navigation-layout";
 
 export default function Voluntariado() {
@@ -36,34 +36,7 @@ export default function Voluntariado() {
 
         <ScrollView showsVerticalScrollIndicator={false}>
           {[1, 2, 3, 4].map((item) => (
-            <View
-              key={item}
-              className="mx-8 my-3 rounded-lg bg-white p-4 shadow-sm"
-            >
-              <Image
-                source={{ uri: "https://via.placeholder.com/100" }}
-                style={{ width: "100%", height: 150, borderRadius: 8 }}
-                resizeMode="cover"
-              />
-              <Text className="font-poppins-bold text-darkGreyBDA mt-2 text-lg">
-                Lorem ipsum dolor
-              </Text>
-              <Text className="font-poppins-regular text-sm text-gray-500">
-                Subtitle lorem ipsum sunt
-              </Text>
-              <View className="mt-2 flex-row items-center">
-                <Ionicons name="location-outline" size={16} color="#888" />
-                <Text className="font-poppins-regular ml-1 text-sm text-gray-500">
-                  Lugar: 15 hrs/wk
-                </Text>
-              </View>
-              <View className="mt-1 flex-row items-center">
-                <Ionicons name="time-outline" size={16} color="#888" />
-                <Text className="font-poppins-regular ml-1 text-sm text-gray-500">
-                  Horario: 15 hrs/wk
-                </Text>
-              </View>
-            </View>
+            <CardComponent key={item} id={item.toString()} />
           ))}
         </ScrollView>
       </View>
