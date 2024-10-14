@@ -3,7 +3,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 import { eq } from "@acme/db";
-import { EconomicalDonationForm } from "@acme/db/schema";
+import { EconomicalDonationForm, PhysicalDonationForm } from "@acme/db/schema";
 
 import { protectedProcedure } from "../trpc";
 
@@ -59,6 +59,28 @@ export const formsRouter = {
         })
         .where(eq(EconomicalDonationForm.id, input.formId));
 
+      return { success: true };
+    }),
+
+  physicalCreate: protectedProcedure
+    .input(
+      z.object({
+        type: z.enum(["food", "products", "discounts"]),
+        name: z.string(),
+        concept: z.string(),
+        email: z.string(),
+        isProducer: z.boolean().optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.insert(PhysicalDonationForm).values({
+        concept: input.concept,
+        email: input.email,
+        isProducer: input.isProducer,
+        name: input.name,
+        type: input.type,
+        userId: ctx.auth.userId,
+      });
       return { success: true };
     }),
 } satisfies TRPCRouterRecord;

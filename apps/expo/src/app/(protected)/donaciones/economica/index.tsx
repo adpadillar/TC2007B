@@ -23,6 +23,8 @@ export default function Economica() {
   const submitForm = api.forms.economicalCreate.useMutation({
     onSuccess: (data) => {
       // Navigate to the payment page
+      clearErrors();
+      clearState();
       router.push(`/donaciones/economica/${data.id}/payment`);
     },
   });
@@ -96,6 +98,16 @@ export default function Economica() {
     setEmailError(null);
     setPhoneError(null);
     setAddressError(null);
+  };
+
+  const clearState = () => {
+    setSelectedAmount(null);
+    setCustomAmount("");
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setAddress("");
   };
 
   const handleSubmit = () => {

@@ -51,7 +51,7 @@ export const PhysicalDonationForm = createTable("physical_donation_form", {
   }),
   name: text("name").notNull(),
   concept: text("concept").notNull(),
-  isProducer: int("is_producer", { mode: "boolean" }).notNull(),
+  isProducer: int("is_producer", { mode: "boolean" }),
   email: text("email_address").notNull(),
 });
 
