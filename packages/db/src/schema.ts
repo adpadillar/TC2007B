@@ -1,5 +1,5 @@
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
   int,
   integer,
@@ -85,6 +85,47 @@ export const EconomicalDonationForm = createTable("economical_donation_form", {
     .$type<"data_provided" | "payment_intent" | "payment_processed">()
     .notNull(),
 });
+
+export const VolunteerProject = createTable("volunteer_project", {
+  id: text("id")
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  vacancies: int().notNull().default(1),
+  imageUrl: text("image_url").notNull(),
+});
+
+export const VolunteerProjectRelations = relations(
+  VolunteerProject,
+  ({ many }) => ({ roles: many(VolunteerProjectRoles) }),
+);
+
+export const VolunteerProjectRoles = createTable("volunteer_project_roles", {
+  id: text("id")
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  description: text("description").notNull(),
+  duration: text("duration").notNull(),
+  time: text("time").notNull(),
+  location: text("location").notNull(),
+  hours: int().notNull(),
+  volunteerProjectId: text("volunteer_project_id")
+    .references(() => VolunteerProject.id, { onDelete: "cascade" })
+    .notNull(),
+});
+
+export const VolunteerProjectRolesRelations = relations(
+  VolunteerProjectRoles,
+  ({ one }) => ({
+    volunteerProject: one(VolunteerProject, {
+      fields: [VolunteerProjectRoles.id],
+      references: [VolunteerProject.id],
+    }),
+  }),
+);
 
 //#region Clerk Configuration
 // --- START CLERK CONFIGURATION ---
