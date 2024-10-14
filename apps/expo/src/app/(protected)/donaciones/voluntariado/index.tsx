@@ -9,9 +9,12 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import CardComponent from "~/components/cardComponent";
+import { api } from "~/utils/api";
 import NavigationLayout from "../../../../components/navigation-layout";
 
 export default function Voluntariado() {
+  const data = api.forms.listVolunteerOffers.useQuery();
+
   return (
     <NavigationLayout scroll={false}>
       <View>
@@ -35,9 +38,7 @@ export default function Voluntariado() {
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false}>
-          {[1, 2, 3, 4].map((item) => (
-            <CardComponent key={item} id={item.toString()} />
-          ))}
+          {data.data?.map((item) => <CardComponent key={item.id} {...item} />)}
         </ScrollView>
       </View>
     </NavigationLayout>

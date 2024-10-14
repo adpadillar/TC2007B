@@ -8,26 +8,15 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { useLocalSearchParams } from "expo-router";
 
 import NavigationLayout from "~/components/navigation-layout";
-
-const title = "Lorem ipsum dolor";
-const description = "Sollicitant homines non sunt.";
-const roleInfo = {
-  selectedRole: "Staff",
-  setSelectedRole: (_: string) => void 0,
-  roles: ["Staff", "Admin", "Developer"],
-  details: "Lorem ipsum dolor sit amet consectetur...",
-};
-const details = {
-  duration: "10 hrs/wk",
-  schedule: "Flexible",
-  location: "Remote",
-  credits: "10 hrs",
-};
-const vacancies = 4;
+import { api } from "~/utils/api";
 
 const ProjectDetailsScreen = () => {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const currentProject = api.forms.getVolunteerOfferById.useQuery({ id });
+
   const [modalVisible, setModalVisible] = useState(false);
   const [needsCredit, setNeedsCredit] = useState<boolean | null>(null);
   const [creditType, setCreditType] = useState<string | null>(null);
@@ -57,10 +46,16 @@ const ProjectDetailsScreen = () => {
       <ScrollView className="px-8 pt-14">
         {/* Title and Image */}
         <View className="items-center">
-          <Text className="font-poppins-bold mb-6 text-2xl">{title}</Text>
+          <Text className="font-poppins-bold mb-6 text-2xl">
+            {currentProject.data?.title}
+          </Text>
           <View className="mb-6 h-64 w-full rounded-lg bg-gray-300">
             <Image
-              source={{ uri: "https://via.placeholder.com/40" }}
+              source={{
+                uri:
+                  currentProject.data?.imageUrl ??
+                  "https://via.placeholder.com/40",
+              }}
               className="h-full w-full"
               resizeMode="contain"
             />
@@ -73,7 +68,7 @@ const ProjectDetailsScreen = () => {
             Descripción
           </Text>
           <Text className="font-poppins-regular text-base text-gray-700">
-            {description}
+            {currentProject.data?.description}
           </Text>
         </View>
 
@@ -92,7 +87,7 @@ const ProjectDetailsScreen = () => {
           ))}
         </Picker> */}
           <Text className="font-poppins-regular mt-2 text-base text-gray-700">
-            {roleInfo.details}
+            {currentProject.data?.roles[0]?.description}
           </Text>
         </View>
 
@@ -103,7 +98,7 @@ const ProjectDetailsScreen = () => {
               Duración:{" "}
             </Text>
             <Text className="font-poppins-regular text-base">
-              {details.duration}
+              {currentProject.data?.roles[0]?.hours} hrs/wk
             </Text>
           </View>
           <View className="flex-row">
@@ -111,7 +106,7 @@ const ProjectDetailsScreen = () => {
               Horario:{" "}
             </Text>
             <Text className="font-poppins-regular text-base">
-              {details.schedule}
+              {currentProject.data?.roles[0]?.time}
             </Text>
           </View>
 
@@ -120,7 +115,7 @@ const ProjectDetailsScreen = () => {
               Ubicación:{" "}
             </Text>
             <Text className="font-poppins-regular text-base">
-              {details.location}
+              {currentProject.data?.roles[0]?.location}
             </Text>
           </View>
 
@@ -128,9 +123,7 @@ const ProjectDetailsScreen = () => {
             <Text className="font-poppins-bold font-poppins-semibold mb-2 text-base">
               Horas de acreditación:{" "}
             </Text>
-            <Text className="font-poppins-regular text-base">
-              {details.credits}
-            </Text>
+            <Text className="font-poppins-regular text-base">{10}</Text>
           </View>
         </View>
 
@@ -145,7 +138,7 @@ const ProjectDetailsScreen = () => {
             </Text>
           </Pressable>
           <Text className="font-poppins-regular mt-2 text-center text-gray-400">
-            {vacancies} vacantes disponibles
+            {currentProject.data?.vacancies} vacantes disponibles
           </Text>
         </View>
 

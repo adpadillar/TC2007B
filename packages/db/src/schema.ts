@@ -125,7 +125,7 @@ export const VolunteerProjectRolesRelations = relations(
   VolunteerProjectRoles,
   ({ one }) => ({
     volunteerProject: one(VolunteerProject, {
-      fields: [VolunteerProjectRoles.id],
+      fields: [VolunteerProjectRoles.volunteerProjectId],
       references: [VolunteerProject.id],
     }),
   }),

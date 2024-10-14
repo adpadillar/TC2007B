@@ -85,4 +85,29 @@ export const formsRouter = {
       });
       return { success: true };
     }),
+
+  listVolunteerOffers: protectedProcedure.query(async ({ ctx }) => {
+    const projects = await ctx.db.query.VolunteerProject.findMany({
+      with: {
+        roles: true,
+      },
+    });
+
+    return projects;
+  }),
+
+  getVolunteerOfferById: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const project = await ctx.db.query.VolunteerProject.findFirst({
+        where: (table) => eq(table.id, input.id),
+        with: {
+          roles: true,
+        },
+      });
+
+      if (!project) return null;
+
+      return project;
+    }),
 } satisfies TRPCRouterRecord;
