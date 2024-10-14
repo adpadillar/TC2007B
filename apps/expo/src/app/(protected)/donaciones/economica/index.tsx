@@ -167,38 +167,60 @@ export default function Economica() {
                 <Text className="font-poppins-semibold mb-6 text-lg">
                   ¿Quieres apadrinar a una familia?
                 </Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    setGodfather(true);
-                    setDialogStep(2);
-                  }}
-                  className="bg-greenBDA mb-3 items-center rounded-full py-2"
-                >
-                  <Text className="text-white">Sí</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => {
-                    setGodfather(false);
-                    setDialogStep(2);
-                  }}
-                  className="bg-redBDA items-center rounded-full py-2"
-                >
-                  <Text className="text-white">No</Text>
-                </TouchableOpacity>
+                <View className="mt-4 flex flex-row gap-x-2">
+                  <TouchableOpacity
+                    onPress={() => {
+                      setGodfather(false);
+                      setModalOpen(false);
+                      setDialogStep(1);
+                      handleSubmit();
+                    }}
+                    className="bg-redBDA flex-1 items-center rounded-full py-2"
+                  >
+                    <Text className="text-white">No</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      setGodfather(true);
+                      setDialogStep(2);
+                    }}
+                    className="bg-greenBDA flex-1 items-center rounded-full py-2"
+                  >
+                    <Text className="text-white">Sí</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             )}
             {dialogStep === 2 && (
               <View>
                 <Text className="font-poppins-semibold mb-6 text-lg">
-                  ¡Muchas Gracias!
+                  Apadrinar a una familia
                 </Text>
                 <View>
                   <Text>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Facere repudiandae quas odit esse fuga vel sed, ullam maxime
-                    itaque dolorum similique tempore eveniet modi soluta.
-                    Quaerat eius sint iusto quasi.
+                    Al apadrinar a una familia, tu donacion se aporta de manera
+                    integra a ellos.
                   </Text>
+                  <View className="mt-4 flex flex-row gap-x-2">
+                    <TouchableOpacity
+                      onPress={() => {
+                        setDialogStep(1);
+                      }}
+                      className="bg-redBDA flex-1 items-center rounded-full py-2"
+                    >
+                      <Text className="text-white">No</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setModalOpen(false);
+                        setDialogStep(1);
+                        handleSubmit();
+                      }}
+                      className="bg-greenBDA flex-1 items-center rounded-full py-2"
+                    >
+                      <Text className="text-white">Sí</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             )}

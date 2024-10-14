@@ -65,7 +65,7 @@ export default function PaymentScreen() {
     <NavigationLayout>
       <View className="flex-1 px-4 py-8">
         <Text className="mb-6 text-center text-2xl font-bold">
-          Seleccioná el método de pago
+          Selecciona el método de pago
         </Text>
         <View className="flex-row flex-wrap justify-between">
           {paymentMethods.map((method) => {
