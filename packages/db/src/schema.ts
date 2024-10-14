@@ -67,15 +67,23 @@ export const EconomicalDonationForm = createTable("economical_donation_form", {
     .notNull()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: text("user_id").references(() => ClerkUsers.id, {
-    onDelete: "cascade",
-  }),
+  userId: text("user_id")
+    .references(() => ClerkUsers.id, {
+      onDelete: "cascade",
+    })
+    .notNull(),
   quantity: text("quantity").notNull(),
   firstName: text("first_name").notNull(),
   lastName: text("last_name").notNull(),
   email: text("email").notNull(),
   phoneNumber: text("phone_number").notNull(),
-  location: text("location").notNull(),
+  address: text("address").notNull(),
+  paymentMethod: text("payment_method").$type<
+    "paypal" | "visa" | "amex" | "mastercard"
+  >(),
+  step: text("step")
+    .$type<"data_provided" | "payment_intent" | "payment_processed">()
+    .notNull(),
 });
 
 //#region Clerk Configuration
