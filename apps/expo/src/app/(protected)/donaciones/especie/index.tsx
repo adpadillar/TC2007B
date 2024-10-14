@@ -132,7 +132,7 @@ export default function Especie() {
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
                 selectedOption === "food"
-                  ? "border-primary bg-primary/10"
+                  ? "border-greenBDA bg-greenBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => setSelectedOption("food")}
@@ -143,7 +143,7 @@ export default function Especie() {
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
                 selectedOption === "products"
-                  ? "border-primary bg-primary/10"
+                  ? "border-greenBDA bg-greenBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => setSelectedOption("products")}
@@ -154,7 +154,7 @@ export default function Especie() {
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
                 selectedOption === "discounts"
-                  ? "border-primary bg-primary/10"
+                  ? "border-greenBDA bg-greenBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => setSelectedOption("discounts")}
@@ -218,7 +218,7 @@ export default function Especie() {
         <TouchableOpacity
           onPress={handleSubmit}
           disabled={submitForm.isPending}
-          className="items-center rounded-md bg-primary py-3"
+          className="bg-greenBDA items-center rounded-md py-3"
         >
           <Text className="text-lg font-bold text-white">
             {submitForm.isPending ? "Enviando..." : "Enviar"}
