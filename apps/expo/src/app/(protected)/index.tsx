@@ -22,7 +22,7 @@ export default function Index() {
     <NavigationLayout safeArea={false}>
       <View className="flex-1">
         {/* Header Section with rounded bottom */}
-        <View className="w-[120vw] -translate-x-[10vw] rounded-b-[90px] bg-primary px-[20vw] pb-16 pt-24">
+        <View className="bg-yellowBDA w-[120vw] -translate-x-[10vw] rounded-b-[90px] px-[20vw] pb-16 pt-24">
           <View className="flex-row items-center justify-between">
             <View className="flex-row items-center">
               <Image
@@ -30,10 +30,12 @@ export default function Index() {
                 style={{ width: 40, height: 40, borderRadius: 20 }}
               />
               <View className="ml-2">
-                <Text className="text-lg font-bold text-white">
+                <Text className="font-poppins-bold text-lg text-white">
                   ¡Bienvenido de nuevo!
                 </Text>
-                <Text className="text-lg text-white">Axel Padillaaaa</Text>
+                <Text className="font-poppins-regular text-lg text-white">
+                  Axel Padillaaaa
+                </Text>
               </View>
             </View>
             <TouchableOpacity
@@ -49,7 +51,7 @@ export default function Index() {
           <View className="mb-4 mt-8 px-8">
             <TextInput
               placeholder="Busca noticias o información..."
-              className="w-full rounded-full border border-gray-200 bg-white p-3 shadow"
+              className="font-poppins-regular w-full rounded-full border border-gray-200 bg-white px-4 py-3 shadow"
             />
           </View>
 
@@ -61,10 +63,10 @@ export default function Index() {
               resizeMode="cover"
             />
             <View className="ml-4 flex-1">
-              <Text className="font-bold text-foreground">
+              <Text className="text-darkGrayBDA font-poppins-bold text-md mb-1">
                 Conoce sobre el BAMX
               </Text>
-              <Text className="text-foreground">
+              <Text className="text-darkGrayBDA font-poppins-regular">
                 Lorem ipsum dolor sit amet consectetur...
               </Text>
             </View>
@@ -72,7 +74,7 @@ export default function Index() {
 
           {/* Community Section */}
           <View className="mb-4 mt-6">
-            <Text className="mb-4 ml-8 text-3xl font-bold text-foreground">
+            <Text className="text-darkGrayBDA font-poppins-bold mb-4 ml-8 text-2xl">
               Comunidad
             </Text>
             <ScrollView
@@ -107,10 +109,10 @@ export default function Index() {
                           }}
                           resizeMode="cover"
                         />
-                        <Text className="mt-4 text-xl font-bold text-foreground">
+                        <Text className="text-darkGrayBDA font-poppins-bold mt-4 text-lg">
                           {project.title}
                         </Text>
-                        <Text className="text-base text-foreground">
+                        <Text className="text-darkGrayBDA font-poppins-regular text-base">
                           {project.raised.toLocaleString("es-MX", {
                             style: "currency",
                             currency: "MXN",
@@ -118,7 +120,7 @@ export default function Index() {
                           raised
                         </Text>
                         <View className="mt-3 h-3 w-full rounded-full bg-gray-200">
-                          <View className="h-full w-3/4 rounded-full bg-primary" />
+                          <View className="bg-redBDA h-full w-3/4 rounded-full" />
                         </View>
                       </View>
                     </View>
@@ -132,9 +134,10 @@ export default function Index() {
         {/* Donate Button */}
         <TouchableOpacity
           onPress={() => router.push("/(protected)/donaciones")}
-          className="absolute bottom-6 right-4 rounded-full bg-primary px-6 py-3 shadow"
-        >
-          <Text className="text-center font-bold text-white">Dona ahora!</Text>
+          className="bg-greenBDA absolute bottom-6 right-4 rounded-full px-6 py-3 shadow">
+          <Text className="font-poppins-bold text-center text-white">
+            Dona ahora!
+          </Text>
         </TouchableOpacity>
       </View>
     </NavigationLayout>
