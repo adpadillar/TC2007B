@@ -1,6 +1,7 @@
-import type { InferSelectModel } from "drizzle-orm";
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import { sql } from "drizzle-orm";
 import {
+  int,
   integer,
   sqliteTableCreator,
   text,
@@ -9,6 +10,9 @@ import {
 
 const createTable = sqliteTableCreator((name) => name);
 const currentTime = sql`(strftime('%s', 'now'))`;
+
+export type SelectProject = InferSelectModel<typeof Project>;
+export type InsertProject = InferSelectModel<typeof Project>;
 
 export const Project = createTable("project", {
   id: text("id")
@@ -27,6 +31,51 @@ export const Project = createTable("project", {
     .notNull()
     .$defaultFn(() => new Date())
     .$onUpdate(() => new Date()),
+});
+
+export type SelectPhysicalDonationForm = InferSelectModel<
+  typeof PhysicalDonationForm
+>;
+export type InsertPhysicalDonationForm = InferInsertModel<
+  typeof PhysicalDonationForm
+>;
+
+export const PhysicalDonationForm = createTable("physical_donation_form", {
+  id: text("id")
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  type: text("type").notNull().$type<"food" | "products" | "discounts">(),
+  userId: text("user_id").references(() => ClerkUsers.id, {
+    onDelete: "cascade",
+  }),
+  name: text("name").notNull(),
+  concept: text("concept").notNull(),
+  isProducer: int("is_producer", { mode: "boolean" }).notNull(),
+  email: text("email_address").notNull(),
+});
+
+export type SelectEconomicalDonationForm = InferSelectModel<
+  typeof EconomicalDonationForm
+>;
+export type InsertEconomicalDonationForm = InferInsertModel<
+  typeof EconomicalDonationForm
+>;
+
+export const EconomicalDonationForm = createTable("economical_donation_form", {
+  id: text("id")
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").references(() => ClerkUsers.id, {
+    onDelete: "cascade",
+  }),
+  quantity: text("quantity").notNull(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phoneNumber: text("phone_number").notNull(),
+  location: text("location").notNull(),
 });
 
 //#region Clerk Configuration
