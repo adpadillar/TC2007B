@@ -132,7 +132,7 @@ export default function Especie() {
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
                 selectedOption === "food"
-                  ? "border-primary bg-primary/10"
+                  ? "border-greenBDA bg-greenBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => setSelectedOption("food")}
@@ -145,7 +145,7 @@ export default function Especie() {
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
                 selectedOption === "products"
-                  ? "border-primary bg-primary/10"
+                  ? "border-greenBDA bg-greenBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => setSelectedOption("products")}
@@ -158,7 +158,7 @@ export default function Especie() {
             <TouchableOpacity
               className={`items-center rounded-lg border-2 p-2 ${
                 selectedOption === "discounts"
-                  ? "border-primary bg-primary/10"
+                  ? "border-greenBDA bg-greenBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => setSelectedOption("discounts")}

@@ -65,7 +65,7 @@ export default function Configuracion() {
         </View>
 
         <TouchableOpacity
-          className="bg-yellowBDA mt-8 rounded-lg py-3"
+          className="bg-redBDA mt-8 rounded-lg py-3"
           onPress={() => signOut()}
         >
           <Text className="font-poppins-semibold text-center text-white">

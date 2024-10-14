@@ -37,20 +37,18 @@ export default function Login() {
             ¿Aún no tienes cuenta?{" "}
             <Link
               href={{ pathname: "/signup/individual" }}
-              className="text-primary"
+              className="text-yellowBDA"
             >
-              <Text className="text-primary underline">Crea una</Text>
+              <Text className="text-yellowBDA underline">Crea una</Text>
             </Link>
           </Text>
         </View>
 
-        <View className="mt-4 flex flex-col gap-y-3"></View>
-
         <TouchableOpacity
-          className="mt-20 rounded-md bg-primary p-3"
+          className="bg-yellowBDA mt-20 rounded-md p-3"
           onPress={handleSignInWithGoogle}
         >
-          <Text className="text-center text-lg font-semibold text-primary-foreground">
+          <Text className="text-yellowBDA-foreground text-center text-lg font-semibold">
             Iniciar sesión
           </Text>
         </TouchableOpacity>

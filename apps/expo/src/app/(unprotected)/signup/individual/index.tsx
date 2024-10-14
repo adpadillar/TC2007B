@@ -20,7 +20,7 @@ export default function SignUpIndividual() {
           <Text className="mb-6">
             ¿Ya tienes una cuenta?{" "}
             <Link href={{ pathname: "/login" }} className="text-primary">
-              <Text className="text-primary underline">Inicia sesión</Text>
+              <Text className="text-yellowBDA underline">Inicia sesión</Text>
             </Link>
           </Text>
         </View>
@@ -58,20 +58,23 @@ export default function SignUpIndividual() {
         </View>
 
         <TouchableOpacity
-          className="mt-20 rounded-md bg-primary p-3"
+          className="bg-yellowBDA mt-20 rounded-md p-3"
           onPress={() => {
             // Handle sign up logic here
             router.push("/");
           }}
         >
-          <Text className="text-center text-lg font-semibold text-primary-foreground">
+          <Text className="text-yellowBDA-foreground text-center text-lg font-semibold">
             Crear cuenta
           </Text>
         </TouchableOpacity>
 
         <View className="mt-6 flex items-center">
-          <Link href={{ pathname: "/signup/company" }} className="text-primary">
-            <Text className="text-primary underline">¿Eres una empresa?</Text>
+          <Link
+            href={{ pathname: "/signup/company" }}
+            className="text-yellowBDA"
+          >
+            <Text className="text-yellowBDA underline">¿Eres una empresa?</Text>
           </Link>
         </View>
       </View>
