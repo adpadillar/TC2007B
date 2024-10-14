@@ -8,33 +8,14 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 
 import NavigationLayout from "~/components/navigation-layout";
-
-// interface ProjectDetailsScreenProps {
-//   title: string;
-//   description: string;
-//   roleInfo: {
-//     selectedRole: string;
-//     setSelectedRole: (role: string) => void;
-//     roles: string[];
-//     details: string;
-//   };
-//   details: {
-//     duration: string;
-//     schedule: string;
-//     location: string;
-//     credits: string;
-//   };
-//   vacancies: number;
-// }
 
 const title = "Lorem ipsum dolor";
 const description = "Sollicitant homines non sunt.";
 const roleInfo = {
   selectedRole: "Staff",
-  setSelectedRole: (role: string) => {},
+  setSelectedRole: (_: string) => void 0,
   roles: ["Staff", "Admin", "Developer"],
   details: "Lorem ipsum dolor sit amet consectetur...",
 };

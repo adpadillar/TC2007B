@@ -41,7 +41,7 @@ export default function Perfil() {
         <Text className="mb-4 text-lg font-semibold text-foreground">
           Antes de comenzar
         </Text>
-        <View className="space-y-4">
+        <View className="flex flex-col gap-y-2">
           {[
             { text: "Datos personales", icon: "person-outline", done: true },
             {
@@ -55,15 +55,16 @@ export default function Perfil() {
               done: false,
             },
           ].map((item, index) => (
-            <View key={index} className="flex-row items-center">
-              <View
-                className={`mr-4 rounded-full p-2 ${item.done ? "bg-green-100" : "bg-gray-100"}`}
-              >
+            <View
+              key={index}
+              className={`flex-row items-center ${item.done ? "opacity-50" : ""}`}
+            >
+              <View className={`bg-greenBDA/10 mr-4 rounded-full p-2`}>
                 <Ionicons
                   // This is a hack to make the type checker happy
                   name={item.icon as unknown as undefined}
                   size={24}
-                  color={item.done ? "#22c55e" : "#9ca3af"}
+                  color="#22c55e"
                 />
               </View>
               <Text
@@ -73,7 +74,7 @@ export default function Perfil() {
               </Text>
               {!item.done && (
                 <TouchableOpacity>
-                  <Text className="text-primary">Completar</Text>
+                  <Text className="text-yellowBDA">Completar</Text>
                 </TouchableOpacity>
               )}
             </View>
@@ -91,7 +92,7 @@ export default function Perfil() {
             horas de voluntariado
           </Text>
           <View className="mt-2 h-2 w-full rounded-full bg-gray-200">
-            <View className="h-full w-3/4 rounded-full bg-primary" />
+            <View className="bg-redBDA h-full w-3/4 rounded-full" />
           </View>
         </View>
       </View>
@@ -100,7 +101,7 @@ export default function Perfil() {
         <Text className="mb-4 text-lg font-semibold text-foreground">
           Tus recompensas
         </Text>
-        <View className="space-y-4">
+        <View className="flex flex-col gap-y-4">
           {[
             {
               text: "50 horas de servicio social",
@@ -117,7 +118,7 @@ export default function Perfil() {
               key={index}
               className="flex-row items-center rounded-lg bg-card p-4 shadow"
             >
-              <View className="mr-4 rounded-full bg-primary p-2">
+              <View className="bg-yellowBDA mr-4 rounded-full p-2">
                 <Ionicons
                   // This is a hack to make the type checker happy
                   name={item.icon as unknown as undefined}

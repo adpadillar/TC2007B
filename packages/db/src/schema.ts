@@ -85,6 +85,9 @@ export const EconomicalDonationForm = createTable("economical_donation_form", {
   step: text("step")
     .$type<"data_provided" | "payment_intent" | "payment_processed">()
     .notNull(),
+  isGodfather: int("is_godfather", { mode: "boolean" })
+    .default(false)
+    .notNull(),
 });
 
 export const VolunteerProject = createTable("volunteer_project", {

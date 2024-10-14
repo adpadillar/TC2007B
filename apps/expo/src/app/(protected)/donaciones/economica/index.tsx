@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {
+  Modal,
+  Pressable,
   ScrollView,
   Text,
   TextInput,
@@ -29,6 +31,8 @@ export default function Economica() {
     },
   });
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const router = useRouter();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
@@ -37,6 +41,9 @@ export default function Economica() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [godfather, setGodfather] = useState(false);
+
+  const [dialogStep, setDialogStep] = useState<1 | 2>(1);
 
   const predefinedAmounts = [400, 800, 1200, 1600];
 
@@ -127,11 +134,77 @@ export default function Economica() {
       lastName: lastName,
       phoneNumber: phone,
       quantity: selectedAmount ? selectedAmount.toString() : customAmount,
+      godfather: godfather,
     });
   };
 
   return (
     <NavigationLayout>
+      <Modal
+        animationType="fade"
+        visible={modalOpen}
+        onRequestClose={() => {
+          setModalOpen(false);
+          setTimeout(() => setDialogStep(1), 500);
+        }}
+        onDismiss={() => {
+          setModalOpen(false);
+          setTimeout(() => setDialogStep(1), 500);
+        }}
+        transparent
+      >
+        <Pressable
+          onPress={(e) => {
+            e.stopPropagation();
+            setModalOpen(false);
+            setTimeout(() => setDialogStep(1), 500);
+          }}
+          className="flex-1 justify-center bg-black/40 p-4"
+        >
+          <Pressable className="rounded-lg bg-white px-6 py-10">
+            {dialogStep === 1 && (
+              <View>
+                <Text className="font-poppins-semibold mb-6 text-lg">
+                  ¿Quieres apadrinar a una familia?
+                </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    setGodfather(true);
+                    setDialogStep(2);
+                  }}
+                  className="bg-greenBDA mb-3 items-center rounded-full py-2"
+                >
+                  <Text className="text-white">Sí</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    setGodfather(false);
+                    setDialogStep(2);
+                  }}
+                  className="bg-redBDA items-center rounded-full py-2"
+                >
+                  <Text className="text-white">No</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            {dialogStep === 2 && (
+              <View>
+                <Text className="font-poppins-semibold mb-6 text-lg">
+                  ¡Muchas Gracias!
+                </Text>
+                <View>
+                  <Text>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Facere repudiandae quas odit esse fuga vel sed, ullam maxime
+                    itaque dolorum similique tempore eveniet modi soluta.
+                    Quaerat eius sint iusto quasi.
+                  </Text>
+                </View>
+              </View>
+            )}
+          </Pressable>
+        </Pressable>
+      </Modal>
       <ScrollView className="flex-1 px-8 py-8">
         <Text className="mb-6 text-2xl font-bold text-foreground">
           Donacion economica
@@ -145,7 +218,7 @@ export default function Economica() {
               key={amount}
               className={`mb-2 w-[48%] rounded-md border p-3 ${
                 selectedAmount === amount
-                  ? "border-primary bg-primary/10"
+                  ? "border-yellowBDA bg-yellowBDA/10"
                   : "border-gray-300"
               }`}
               onPress={() => {
@@ -223,8 +296,15 @@ export default function Economica() {
           <MaybeErrorText error={addressError} />
         </View>
         <TouchableOpacity
-          className="rounded-md bg-primary p-4"
-          onPress={handleSubmit}
+          className="bg-yellowBDA rounded-md p-4"
+          onPress={() => {
+            clearErrors();
+
+            const valid = isValidForm();
+            if (!valid) return;
+
+            setModalOpen(true);
+          }}
           disabled={submitForm.isPending}
         >
           <Text className="text-center text-lg font-semibold text-white">

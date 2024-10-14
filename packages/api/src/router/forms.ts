@@ -17,12 +17,14 @@ export const formsRouter = {
         lastName: z.string(),
         phoneNumber: z.string(),
         quantity: z.string(),
+        godfather: z.boolean(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       const [first] = await ctx.db
         .insert(EconomicalDonationForm)
         .values({
+          isGodfather: input.godfather,
           address: input.address,
           email: input.email,
           firstName: input.firstName,
