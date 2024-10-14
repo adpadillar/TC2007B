@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Image,
+  Pressable,
   ScrollView,
   Text,
   TextInput,
@@ -62,25 +63,29 @@ export default function Index() {
           </View>
 
           {/* Info Card */}
-          <View className="mx-8 mb-4 flex-row rounded-md bg-card p-4 shadow">
+
+          <Pressable
+            className="mx-8 mb-4 flex-row rounded-md bg-card p-4 shadow"
+            onPress={() => router.push("https://bdalimentos.org/")}
+          >
             <Image
               className="mr-2"
               source={{
-                uri: "https://bamx.org.mx/wp-content/uploads/2023/10/RED-BAMX.png",
+                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUdb_CmokFLWgMKHwvoWnjBqGGRbEocghdmA&s",
               }}
               style={{ width: 150, height: 100, borderRadius: 8 }}
               resizeMode="contain"
             />
             <View className="ml-4 flex-1">
               <Text className="text-darkGrayBDA font-poppins-bold text-md mb-1">
-                Conoce sobre el BAMX
+                Conoce sobre el BDA Guadalajara
               </Text>
               <Text className="text-darkGrayBDA font-poppins-regular text-sm">
                 Somos una OSC sin fines de lucro y apartidista, nuestra red está
                 compuesta por...
               </Text>
             </View>
-          </View>
+          </Pressable>
 
           {/* Community Section */}
           <View className="mb-4 mt-6">
