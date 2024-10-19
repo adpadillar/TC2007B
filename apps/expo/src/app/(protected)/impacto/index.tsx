@@ -39,7 +39,7 @@ const ImpactCard = ({
 };
 
 const ImpactCardLoading = () => (
-  <View className="mb-4 rounded-lg bg-white p-4">
+  <View testID="impact-card-loading" className="mb-4 rounded-lg bg-white p-4">
     <View className="mb-3 h-40 w-full animate-pulse overflow-hidden rounded-lg bg-gray-200">
       <View className="h-full w-full bg-gray-300"></View>
     </View>
